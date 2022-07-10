@@ -17,24 +17,8 @@ public class Main {
 		T = fs.nextInt();
 		for (int tc = 0; tc < T; tc++) {
 			int n = fs.nextInt();
-			int temp = n;
-			int originalSum = 0;
-			while (temp > 0) {
-				originalSum += (temp % 10);
-				temp /= 10;
-			}
-			temp = n + 1;
-			int nextSum = 0;
-			while (temp > 0) {
-				nextSum += (temp % 10);
-				temp /= 10;
-			}
-			temp = n + 2;
-			int otherSum = 0;
-			while (temp > 0) {
-				otherSum += (temp % 10);
-				temp /= 10;
-			}
+			int originalSum = getDigitSum(n);
+			int nextSum = getDigitSum(n + 1);
 			if (originalSum % 2 != nextSum % 2) {
 				out.println(n + 1);
 			} else {
@@ -42,6 +26,15 @@ public class Main {
 			}
 		}
 		out.close();
+	}
+	
+	static int getDigitSum(int n) {
+		int sum = 0;
+		while (n > 0) {
+			sum += (n % 10);
+			n /= 10;
+		}
+		return sum;
 	}
 	
 	static void sort(int[] a) {
